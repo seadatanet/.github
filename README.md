@@ -114,12 +114,12 @@ flowchart TB
 
 | Logo | Software | Maintainer / operator | Current version | Java / runtime | Current licence | FAIR / publication status | Private repository | Public repository |
 |---|---|---|---|---|---|---|---|---|
-| <img src="assets/logos/octopus.png" alt="OCTOPUS" height="34"> | **OCTOPUS** | Ifremer | **1.12.0** | OpenJDK 11+ | **LGPL v3** | **FAIRised** and public | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/octopus) | [github.com/seadatanet/octopus](https://github.com/seadatanet/octopus) |
-| <img src="assets/logos/nemo.jpg" alt="NEMO" height="34"> | **NEMO** | Ifremer | **2.1.1** → **2.2.0 upcoming** | JDK 8 → OpenJDK 11+ | SeaDataNet 1.0 → **LGPL v3** | FAIRisation + public release planned with 2.2.0 | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/nemo) | [github.com/seadatanet/nemo](https://github.com/seadatanet/nemo) *(repository created; code publication planned)* |
-| <img src="assets/logos/mikado.jpg" alt="MIKADO" height="34"> | **MIKADO** | Ifremer | **3.8.4** / **3.8.2** | Java 21 / Jakarta; legacy JDK 8 line | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/mikado-software) | <https://github.com/seadatanet/mikado> *(planned)* |
-| <img src="assets/logos/rm.png" alt="Replication Manager" height="34"> | **Replication Manager (RM)** | Ifremer | **1.2.0** | JDK 8; Tomcat < 10 | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/ReplicationManager) | <https://github.com/seadatanet/rm> *(planned)* |
-| <img src="assets/logos/endsandbends.jpg" alt="EndsAndBends" height="30"> | **EndsAndBends (E&B)** | Ifremer | **2.2.0** | Java 21; OpenJDK / Azul Zulu build | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned in the near term | **TBD – Ifremer GitLab project URL** | <https://github.com/seadatanet/endsandbends> *(planned publication)* |
-| <img src="assets/logos/import-manager.png" alt="Import Manager" height="30"> | **Import Manager** | MARIS | **TBD** | Central web application | **TBD** | Externally operated; source status to document | — | — |
+| <img src="assets/logos/octopus.png" alt="OCTOPUS" height="68"> | **OCTOPUS** | Ifremer | **1.12.0** | OpenJDK 11+ | **LGPL v3** | **FAIRised** and public | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/octopus) | [github.com/seadatanet/octopus](https://github.com/seadatanet/octopus) |
+| <img src="assets/logos/nemo.jpg" alt="NEMO" height="68"> | **NEMO** | Ifremer | **2.1.1** → **2.2.0 upcoming** | JDK 8 → OpenJDK 11+ | SeaDataNet 1.0 → **LGPL v3** | FAIRisation + public release planned with 2.2.0 | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/nemo) | [github.com/seadatanet/nemo](https://github.com/seadatanet/nemo) *(repository created; code publication planned)* |
+| <img src="assets/logos/mikado.jpg" alt="MIKADO" height="68"> | **MIKADO** | Ifremer | **3.8.4** / **3.8.2** | Java 21 / Jakarta; legacy JDK 8 line | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/mikado-software) | <https://github.com/seadatanet/mikado> *(planned)* |
+| <img src="assets/logos/rm.png" alt="Replication Manager" height="68"> | **Replication Manager (RM)** | Ifremer | **1.2.0** | JDK 8; Tomcat < 10 | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/ReplicationManager) | <https://github.com/seadatanet/rm> *(planned)* |
+| <img src="assets/logos/endsandbends.jpg" alt="EndsAndBends" height="60"> | **EndsAndBends (E&B)** | Ifremer | **2.2.0** | Java 21; OpenJDK / Azul Zulu build | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned in the near term | **TBD – Ifremer GitLab project URL** | <https://github.com/seadatanet/endsandbends> *(planned publication)* |
+| <img src="assets/logos/import-manager.png" alt="Import Manager" height="60"> | **Import Manager** | MARIS | **TBD** | Central web application | **TBD** | Externally operated; source status to document | — | — |
 
 ### Main roles
 
@@ -179,15 +179,15 @@ OCTOPUS is also a direct dependency of NEMO and provides shared SeaDataNet forma
 ```mermaid
 flowchart LR
 
-  OCT_C["OCTOPUS 1.12.0<br/>OpenJDK 11+<br/>LGPL v3 · public GitHub · FAIRised"]
+  OCT_C["OCTOPUS 1.12.0<br/>OpenJDK 11+<br/>LGPL v3<br/>public GitHub<br/>FAIRised"]
 
-  NEMO_C["NEMO 2.1.1<br/>JDK 8<br/>SeaDataNet 1.0 · private"] --> NEMO_T["NEMO 2.2.0<br/>OpenJDK 11+<br/>LGPL v3 · public GitHub · FAIRised"]
+  NEMO_C["NEMO 2.1.1<br/>JDK 8<br/>SeaDataNet 1.0<br/>private"] --> NEMO_T["NEMO 2.2.0<br/>OpenJDK 11+<br/>LGPL v3<br/>public GitHub<br/>FAIRised"]
 
-  EB_C["E&B 2.2.0<br/>Java 21<br/>SeaDataNet 1.0 · private"] --> EB_T["E&B<br/>LGPL v3 · public GitHub · FAIRised"]
+  EB_C["E&B 2.2.0<br/>Java 21<br/>SeaDataNet 1.0<br/>private"] --> EB_T["E&B target<br/>LGPL v3<br/>public GitHub<br/>FAIRised"]
 
-  MIK_C["MIKADO<br/>3.8.2 JDK 8 + 3.8.4 Java 21/Jakarta<br/>SeaDataNet 1.0 · private"] --> MIK_T["MIKADO target<br/>LGPL v3 · public GitHub · FAIRised"]
+  MIK_C["MIKADO<br/>3.8.2 · JDK 8<br/>3.8.4 · Java 21 / Jakarta<br/>SeaDataNet 1.0 · private"] --> MIK_T["MIKADO target<br/>LGPL v3<br/>public GitHub<br/>FAIRised"]
 
-  RM_C["RM 1.2.0<br/>JDK 8 · Tomcat <10<br/>SeaDataNet 1.0 · private"] --> RM_T["RM target<br/>LGPL v3 · public GitHub · FAIRised"]
+  RM_C["RM 1.2.0<br/>JDK 8<br/>Tomcat <10<br/>SeaDataNet 1.0 · private"] --> RM_T["RM target<br/>LGPL v3<br/>public GitHub<br/>FAIRised"]
 
   classDef achieved fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#111;
   classDef current fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#111;
@@ -211,20 +211,20 @@ For RM, a future runtime upgrade may be desirable, but no target Java/Tomcat ver
 
 SeaDataNet software relies on shared semantic resources that are synchronised locally through web services. These resources provide a common reference layer across data and metadata workflows.
 
-| Provider | Main SeaDataNet resources | Notes |
-|---|---|---|
-| <img src="assets/logos/bodc.jpg" alt="BODC" height="36"> **BODC / NVS** | SeaDataNet controlled vocabularies (`C*`, `L*`, `P*`), EDMED, EDIOS, exposed C17 | Main vocabulary web-service provider used by SeaDataNet applications |
-| <img src="assets/logos/maris.png" alt="MARIS" height="30"> **MARIS** | EDMO, EDMERP | Directories exposed through MARIS web services |
-| <img src="assets/logos/ices.png" alt="ICES" height="32"> **ICES / CIEM** | C17 source | C17 is created/maintained by ICES, synchronised to BODC and exposed through the BODC service |
+| Logo | Organisation | Main SeaDataNet resources | Notes |
+|---|---|---|---|
+| <img src="assets/logos/bodc.jpg" alt="BODC" height="72"> | **BODC / NVS** | SeaDataNet controlled vocabularies (`C*`, `L*`, `P*`), EDMED, EDIOS, exposed C17 | Main vocabulary web-service provider used by SeaDataNet applications |
+| <img src="assets/logos/maris.png" alt="MARIS" height="64"> | **MARIS** | EDMO, EDMERP | Directories exposed through MARIS web services |
+| <img src="assets/logos/ices.png" alt="ICES" height="68"> | **ICES / CIEM** | C17 source | C17 is created/maintained by ICES, synchronised to BODC and exposed through the BODC service |
 
 OCTOPUS, NEMO, MIKADO and Replication Manager each contact the relevant web services directly to maintain a local copy. The use of SeaDataNet vocabularies by EndsAndBends is still to be confirmed.
 
 ## Central services
 
-| Service | Operator | Role |
-|---|---|---|
-| <img src="assets/logos/import-manager.png" alt="Import Manager" height="30"> **Import Manager** | <img src="assets/logos/maris.png" alt="MARIS" height="24"> MARIS | Receives **CDI XML + coupling table** from Replication Manager instances. The coupling table links CDI metadata to the corresponding data files. |
-| <img src="assets/logos/eudat.jpg" alt="EUDAT" height="36"> **EUDAT** | EUDAT | Receives replicated **unrestricted data** from Replication Manager. Restricted data remain at the originating NODC. |
+| Logo | Service | Organisation / operator | Role |
+|---|---|---|---|
+| <img src="assets/logos/import-manager.png" alt="Import Manager" height="64"> | **Import Manager** | **MARIS** | Receives **CDI XML + coupling table** from Replication Manager instances. The coupling table links CDI metadata to the corresponding data files. |
+| <img src="assets/logos/eudat.jpg" alt="EUDAT" height="72"> | **EUDAT** | **EUDAT** | Receives replicated **unrestricted data** from Replication Manager. Restricted data remain at the originating NODC. |
 
 ## Maintainer
 
