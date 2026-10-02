@@ -1,7 +1,7 @@
 # SeaDataNet Software Ecosystem
 
 > **Status snapshot: October 2026**  
-> This page documents the SeaDataNet software ecosystem used to **prepare, validate, harmonise and replicate marine data and metadata**. It deliberately stops at the central **Import Manager / EUDAT** layer and does not describe the CDI discovery portal itself.
+> This page documents the SeaDataNet software ecosystem used to **prepare, validate, harmonise and replicate marine data and metadata**. It deliberately stops at the central **Import Manager (IM) / EUDAT** layer and does not describe the CDI discovery portal itself.
 
 The ecosystem is evolving from a set of historically private Java applications towards a more open, FAIR and maintainable software stack. The first diagram gives a deliberately simplified functional overview; the following sections add publication status, technical dependencies and modernisation details.
 
@@ -17,7 +17,7 @@ flowchart LR
   EB["EndsAndBends (E&B)<br/>Simplify navigation tracks"]
   MIK["MIKADO<br/>Generate XML metadata"]
   RM["Replication Manager<br/>Validate, link & replicate"]
-  IM["Import Manager<br/>Central metadata ingestion"]
+  IM["Import Manager (IM)<br/>Central metadata ingestion"]
   EUDAT["EUDAT<br/>Replicate unrestricted data"]
 
   NEMO -->|"CDI summary"| MIK
@@ -68,7 +68,7 @@ flowchart TB
 
   subgraph CENTRAL["Central services"]
     direction LR
-    IM["Import Manager<br/>operated by MARIS"]
+    IM["Import Manager (IM)<br/>operated by MARIS"]
     EUDAT["EUDAT<br/>data replication"]
   end
 
@@ -118,8 +118,8 @@ flowchart TB
 | <img src="assets/logos/nemo.jpg" alt="NEMO" height="68"> | **NEMO** | Ifremer | **2.1.1** → **2.2.0 upcoming** | JDK 8 → OpenJDK 11+ | SeaDataNet 1.0 → **LGPL v3** | FAIRisation + public release planned with 2.2.0 | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/nemo) | [github.com/seadatanet/nemo](https://github.com/seadatanet/nemo) *(repository created; code publication planned)* |
 | <img src="assets/logos/mikado.jpg" alt="MIKADO" height="68"> | **MIKADO** | Ifremer | **3.8.4** / **3.8.2** | Java 21 / Jakarta; legacy JDK 8 line | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/mikado-software) | <https://github.com/seadatanet/mikado> *(planned)* |
 | <img src="assets/logos/rm.png" alt="Replication Manager" height="68"> | **Replication Manager (RM)** | Ifremer | **1.2.0** | JDK 8; Tomcat < 10 | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned | [Ifremer GitLab](https://gitlab.ifremer.fr/seadatanet/applications/ReplicationManager) | <https://github.com/seadatanet/rm> *(planned)* |
-| <img src="assets/logos/endsandbends.jpg" alt="EndsAndBends" height="60"> | **EndsAndBends (E&B)** | Ifremer | **2.2.0** | Java 21; OpenJDK / Azul Zulu build | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned in the near term | **TBD – Ifremer GitLab project URL** | <https://github.com/seadatanet/endsandbends> *(planned publication)* |
-| <img src="assets/logos/import-manager.png" alt="Import Manager" height="60"> | **Import Manager** | MARIS | **TBD** | Central web application | **TBD** | Externally operated; source status to document | — | — |
+| <img src="assets/logos/endsandbends.jpg" alt="EndsAndBends" height="60"> | **EndsAndBends (E&B)** | Ifremer | **2.2.0** | Java 21; OpenJDK / Azul Zulu build | SeaDataNet 1.0 → **LGPL v3** | FAIRisation and public release planned in the near term | [Ifremer GitLab](https://gitlab.ifremer.fr/endsandbends/endsandbends) | <https://github.com/seadatanet/endsandbends> *(planned publication)* |
+| <img src="assets/logos/import-manager.png" alt="Import Manager" height="60"> | **Import Manager (IM)** | MARIS | **TBD** | Central MARIS web application | **TBD** | **Not distributed; MARIS-operated internal component** | Not documented | None identified |
 
 ### Main roles
 
@@ -127,8 +127,8 @@ flowchart TB
 - **NEMO** — harmonises heterogeneous marine data into SeaDataNet exchange formats (ODV, MedAtlas and NetCDF/CF) and can produce a CDI summary used by MIKADO.
 - **MIKADO** — prepares and manages SeaDataNet XML metadata for EDMED, CSR, EDMERP, CDI and EDIOS. It can work manually or generate metadata from local databases / CSV files. It also generates the coupling table used by Replication Manager.
 - **Replication Manager** — one instance is typically deployed by each NODC. It synchronises data and CDI metadata with the central SeaDataNet infrastructure, performs consistency/format checks, handles data-access workflows, transfers CDI XML and the coupling table to Import Manager, and replicates unrestricted data to EUDAT.
-- **EndsAndBends (E&B)** — simplifies raw vessel navigation tracks while preserving their geometry, producing spatial objects suitable for CDI/CSR records and GIS use. Its GML output can be injected into MIKADO files.
-- **Import Manager** — MARIS-operated central web component receiving CDI metadata and coupling information from NODC Replication Manager instances and supporting ingestion/administration of the central workflow.
+- **EndsAndBends (E&B)** — samples and simplifies raw vessel navigation tracks while preserving their geometry, producing spatial objects suitable for CDI/CSR records and GIS use. Its GML output can be injected into MIKADO files.
+- **Import Manager (IM)** — MARIS-operated internal web component receiving CDI metadata and coupling information from NODC Replication Manager instances and supporting ingestion/administration of the central workflow. IM is deployed only within the MARIS infrastructure and is not distributed as a SeaDataNet client application.
 
 ## Technical dependencies
 
@@ -217,13 +217,13 @@ SeaDataNet software relies on shared semantic resources that are synchronised lo
 | <img src="assets/logos/maris.png" alt="MARIS" height="64"> | **MARIS** | EDMO, EDMERP | Directories exposed through MARIS web services |
 | <img src="assets/logos/ices.png" alt="ICES" height="68"> | **ICES / CIEM** | C17 source | C17 is created/maintained by ICES, synchronised to BODC and exposed through the BODC service |
 
-OCTOPUS, NEMO, MIKADO and Replication Manager each contact the relevant web services directly to maintain a local copy. The use of SeaDataNet vocabularies by EndsAndBends is still to be confirmed.
+OCTOPUS, NEMO, MIKADO and Replication Manager each contact the relevant web services directly to maintain a local copy. **EndsAndBends does not use SeaDataNet controlled vocabularies; its role is focused on navigation-track sampling and spatial simplification.**
 
 ## Central services
 
 | Logo | Service | Organisation / operator | Role |
 |---|---|---|---|
-| <img src="assets/logos/import-manager.png" alt="Import Manager" height="64"> | **Import Manager** | **MARIS** | Receives **CDI XML + coupling table** from Replication Manager instances. The coupling table links CDI metadata to the corresponding data files. |
+| <img src="assets/logos/import-manager.png" alt="Import Manager" height="64"> | **Import Manager (IM)** | **MARIS** | Receives **CDI XML + coupling table** from Replication Manager instances. The coupling table links CDI metadata to the corresponding data files. IM is deployed only within the MARIS infrastructure and is not distributed to NODCs. |
 | <img src="assets/logos/eudat.jpg" alt="EUDAT" height="72"> | **EUDAT** | **EUDAT** | Receives replicated **unrestricted data** from Replication Manager. Restricted data remain at the originating NODC. |
 
 ## Maintainer
@@ -236,11 +236,11 @@ Most client-side SeaDataNet software described here is developed and maintained 
 
 ## Known documentation gaps
 
-This first ecosystem view intentionally keeps a few items explicit rather than guessing them:
+A few items remain to be documented:
 
-- exact private Ifremer GitLab URL for **EndsAndBends**;
-- **Import Manager** current version, licence and source-code repository status;
-- confirmation of whether **EndsAndBends** directly consumes SeaDataNet controlled vocabularies;
+- **Import Manager (IM)** current version, licence and internal source-code repository status;
 - any future Java/Tomcat target for **Replication Manager**.
+
+Import Manager is operated internally by MARIS and is not distributed as a SeaDataNet client application. No public Import Manager repository has been identified in the MARIS GitHub organisation.
 
 These points can be completed as the software inventory is consolidated.
