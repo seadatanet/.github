@@ -60,7 +60,7 @@ flowchart TB
   subgraph NODC["NODC software environment"]
     direction LR
     EB["EndsAndBends (E&B)<br/>2.2.0"]
-    NEMO["NEMO<br/>2.1.1 → 2.2.0"]
+    NEMO["NEMO<br/>2.2.0"]
     MIKADO["MIKADO<br/>3.8.4 / 3.8.2"]
     RM["Replication Manager (RM)<br/>1.2.0"]
     OCTOPUS["OCTOPUS<br/>1.12.0"]
